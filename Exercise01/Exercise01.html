@@ -513,6 +513,7 @@
             scoreX.textContent = scores.X;
             scoreO.textContent = scores.O;
             scoreTie.textContent = scores.tie;
+            saveScores(); // 儲存分數到瀏覽器
         }
         
         // 重新開始遊戲
@@ -531,6 +532,20 @@
             restartGame();
         }
         
+        // 儲存分數到瀏覽器
+        function saveScores() { // 定義儲存分數函數
+            localStorage.setItem('ticTacToeScores', JSON.stringify(scores)); // 將分數物件轉換為JSON字串並儲存到本地儲存
+        } // 結束儲存分數函數
+
+        // 載入分數
+        function loadScores() { // 定義載入分數函數
+            const saved = localStorage.getItem('ticTacToeScores'); // 從本地儲存取得分數資料
+            if (saved) { // 如果有儲存的分數資料
+                scores = JSON.parse(saved); // 將JSON字串轉換為物件並賦值給分數變數
+            } // 結束分數資料檢查
+            updateScores(); // 更新分數顯示
+        } // 結束載入分數函數
+
         // 渲染遊戲板
         function renderBoard() {
             const cells = document.querySelectorAll('.cell');
