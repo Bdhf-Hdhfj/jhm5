@@ -395,7 +395,7 @@
             
             // 更新遊戲板
             board[index] = currentPlayer;
-            makeMove(index, cell); // 呼叫執行移動函數
+            cell.classList.add('occupied', currentPlayer.toLowerCase()); // 為格子添加已佔用和玩家類別
             e.target.classList.add(currentPlayer.toLowerCase());
             
             // 檢查勝負
@@ -467,7 +467,7 @@
                 if (emptyCells.length > 0) {
                     const randomIndex = Math.floor(Math.random() * emptyCells.length);
                     board[emptyCells[randomIndex]] = 'O';
-                    makeMove(index, cell); // 呼叫執行移動函數
+                    cell.classList.add('occupied', currentPlayer.toLowerCase()); // 為格子添加已佔用和玩家類別
                     moveFound = true;
                 }
             }
