@@ -328,7 +328,7 @@
         </div>
         
         <footer>
-            使用 HTML、CSS 和 JavaScript 製作 | &copy; 2023 井字遊戲
+            使用 HTML、CSS 和 JavaScript 製作 | &copy; 2025 井字遊戲
         </footer>
     </div>
 
@@ -372,6 +372,7 @@
         
         // 處理格子點擊
         function handleCellClick(e) {
+            const cell = event.target;
             const index = parseInt(e.target.getAttribute('data-index'));
             
             // 檢查格子是否已被佔用或遊戲已結束
