@@ -368,7 +368,10 @@
                 cell.addEventListener('click', handleCellClick);
                 gameBoard.appendChild(cell);
             }
-        }
+
+            // 載入分數
+            loadScores(); // 呼叫載入分數函數
+        } // 結束初始化遊戲函數
         
         // 處理格子點擊
         function handleCellClick(e) {
