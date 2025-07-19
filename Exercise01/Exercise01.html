@@ -137,6 +137,16 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             background: #f8f9fa;
         }
+
+        .cell:hover:not(.occupied) { /* 格子滑鼠懸停狀態（非已佔用） */
+            background: rgba(255, 255, 255, 0.2); /* 設定更亮的半透明白色背景 */
+            transform: scale(1.05); /* 設定縮放比例為1.05（放大5%） */
+        } /* 結束格子懸停樣式 */
+
+        /* 已佔用的格子 */
+        .cell.occupied { /* 選擇具有 occupied 類別的格子 */
+            cursor: not-allowed; /* 設定滑鼠指標為禁止符號 */
+        } /* 結束已佔用格子樣式 */
         
         .cell.x::before, .cell.x::after {
             cursor: not-allowed; /* 設定滑鼠指標為禁止符號 */
@@ -385,6 +395,7 @@
             
             // 更新遊戲板
             board[index] = currentPlayer;
+            makeMove(index, cell); // 呼叫執行移動函數
             e.target.classList.add(currentPlayer.toLowerCase());
             
             // 檢查勝負
@@ -409,7 +420,13 @@
                 setTimeout(makeComputerMove, 500);
             }
         }
-        
+
+        // 執行移動
+        function makeMove(index, cell) { // 定義執行移動函數
+            board[index] = currentPlayer; // 在棋盤陣列中記錄當前玩家的移動
+            cell.classList.add('occupied', currentPlayer.toLowerCase()); // 為格子添加已佔用和玩家類別
+        }
+
         // 電腦移動
         function makeComputerMove() {
             // 簡單的AI：先嘗試贏，再阻止玩家，最後隨機選擇
@@ -451,6 +468,7 @@
                 if (emptyCells.length > 0) {
                     const randomIndex = Math.floor(Math.random() * emptyCells.length);
                     board[emptyCells[randomIndex]] = 'O';
+                    makeMove(index, cell); // 呼叫執行移動函數
                     moveFound = true;
                 }
             }
