@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background: rgb(98, 98, 255);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -90,7 +90,7 @@ header p {
 /* 篩選按鈕 */
 .filters {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     padding: 10px 0;
     background: #f8f9fa;
     border-bottom: 1px solid #eee;
@@ -116,7 +116,6 @@ header p {
 #taskList {
     list-style-type: none;
     height: 70%;
-    max-height: 70%;
     overflow-y: auto;
 }
 
